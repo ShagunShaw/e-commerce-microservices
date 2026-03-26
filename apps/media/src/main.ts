@@ -10,9 +10,9 @@ async function bootstrap() {
 
   // const port= Number(process.env.MEDIA_TCP_PORT ?? 4013)
 
-  const rmq_url= `${process.env.RABBITMQ_URL}` || 'amqp://loclhost:5672'
+  const rmq_url= process.env.RABBITMQ_URL || 'amqp://guest:guest@localhost:5672/'
 
-  const queue= `${process.env.MEDIA_QUEUE}` || 'media_queue'
+  const queue= process.env.MEDIA_QUEUE || 'media_queue'
 
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     MediaModule,

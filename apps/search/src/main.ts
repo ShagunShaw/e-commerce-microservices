@@ -10,9 +10,9 @@ async function bootstrap() {
 
   // const port= Number(process.env.SEARCH_TCP_PORT ?? 4012)
 
-  const rmq_url= `${process.env.RABBITMQ_URL}` || 'amqp://loclhost:5672'
+  const rmq_url= process.env.RABBITMQ_URL || 'amqp://guest:guest@localhost:5672/'
 
-  const queue= `${process.env.SEARCH_QUEUE}` || 'search_queue'
+  const queue= process.env.SEARCH_QUEUE || 'search_queue'
 
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(SearchModule,
     {
