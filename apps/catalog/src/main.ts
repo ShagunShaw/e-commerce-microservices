@@ -2,6 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { CatalogModule } from './catalog.module';
 import { Logger } from '@nestjs/common';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function bootstrap() {
   process.title = 'catalog'

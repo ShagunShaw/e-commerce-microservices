@@ -2,6 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { MediaModule } from './media.module';
 import { Logger } from '@nestjs/common';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function bootstrap() {
   process.title = 'media';

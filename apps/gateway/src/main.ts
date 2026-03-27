@@ -1,6 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { GatewayModule } from './gateway.module';
 import { Logger } from '@nestjs/common';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function bootstrap() {
   process.title = 'gateway';
