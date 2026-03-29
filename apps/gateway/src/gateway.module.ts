@@ -2,9 +2,23 @@ import { Module } from '@nestjs/common';
 import { GatewayController } from './gateway.controller';
 import { GatewayService } from './gateway.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ConfigModule } from '@nestjs/config'
+import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({    // Check from GPT once, ki isko configure krne k baad hrr folder mei import dotenv ni krna hoga? as we had already did in this application
+      isGlobal: true
+    }),
+
+    MongooseModule.forRoot(`${process.env.MONGO_URI}/${process.env.MONGO_DB_NAME}`),
+
+    UsersModule,
+
+    AuthModule,
+
     ClientsModule.register(
       [
         {
