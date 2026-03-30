@@ -13,7 +13,7 @@ import { AuthModule } from './auth/auth.module';
       isGlobal: true
     }),
 
-    MongooseModule.forRoot(`${process.env.MONGO_URI}/${process.env.MONGO_DB_NAME}`),
+    MongooseModule.forRoot(`${process.env.MONGO_URI}/${process.env.MONGO_DB_USERS}`),
 
     UsersModule,
 
