@@ -3,6 +3,7 @@ import { CatalogModule } from './catalog.module';
 import { Logger } from '@nestjs/common';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import dotenv from 'dotenv';
+import { applyToMicroservicesLayer } from '@app/rpc';
 
 dotenv.config();
 
@@ -31,6 +32,9 @@ async function bootstrap() {
       }
     },
   );
+
+  // So here we are writing this particular line so as to enable our 'custom exception filters' that we had created in our libs/rpc folder in the root
+  applyToMicroservicesLayer(app)
 
   app.enableShutdownHooks()
 
