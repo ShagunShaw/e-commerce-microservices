@@ -3,6 +3,7 @@ import { SearchModule } from './search.module';
 import { Logger } from '@nestjs/common';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import dotenv from 'dotenv';
+import { applyToMicroservicesLayer } from '@app/rpc';
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ async function bootstrap() {
       }
     }
   );
+
+  applyToMicroservicesLayer(app)
 
   app.enableShutdownHooks()
   await app.listen();

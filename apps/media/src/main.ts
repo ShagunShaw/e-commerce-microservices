@@ -3,6 +3,7 @@ import { MediaModule } from './media.module';
 import { Logger } from '@nestjs/common';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import dotenv from 'dotenv';
+import { applyToMicroservicesLayer } from '@app/rpc';
 
 dotenv.config();
 
@@ -30,6 +31,8 @@ async function bootstrap() {
       }
     },
   );
+
+  applyToMicroservicesLayer(app)      // So that we can use our globally configured validation logic and exception filters here in this microservice also
 
   app.enableShutdownHooks()
   await app.listen();
